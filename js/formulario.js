@@ -1,7 +1,7 @@
-function usuario(cell) {
+function formulario(cell) {
 
     let layoutusuario = cell.attachLayout({
-        pattern: "2E",
+        pattern: "2U",
         offsets: {
             top: 5,
             right: 10,
@@ -11,9 +11,9 @@ function usuario(cell) {
         cells: [
             {
                 id: "a",
-                text: "Gerenciar Usuarios",
+                text: "Formulário para Cadastros",
                 header: true,
-                fix_size: [true, null]
+                width: 455,
             },
             {
                 id: "b",
@@ -27,10 +27,8 @@ function usuario(cell) {
 
     layoutusuario.cells('b').setText('<label style="font-size: 14px">Encontrar por </label><input type="text" title="search" id="searchFilter" style="width: 150px"> </input>');
 
-    tabelausuarios.setHeader("Login,Nome,Condominio");
+    tabelausuarios.setHeader("E-mail,Nome");
     tabelausuarios.enableAutoWidth(true);
-    tabelausuarios.setColAlign("right,left,left");
-    tabelausuarios.setColTypes("ro,ro,ro");
     tabelausuarios.init();
     tabelausuarios.enableSmartRendering(true);
     tabelausuarios.makeFilter("searchFilter", 1);
@@ -68,7 +66,7 @@ function usuario(cell) {
             dataType: "json",
             success: function (data) {
                 data.filter(function (item) {
-                    tabelausuarios.addRow(item.verticals_uuid, [item.username, item.first_name + ' ' + item.last_name, item.condominio]);
+                    tabelausuarios.addRow(item.verticals_uuid, [item.username, item.first_name + ' ' + item.last_name]);
                 });
             },
         }).fail(function (jqXHR) {
@@ -80,86 +78,86 @@ function usuario(cell) {
         });
     }
 
-    function alterarSenha(id) {
+    // function alterarSenha(id) {
 
-        let myWins = new dhtmlXWindows({
-            image_path: "codebase/imgs/"
-        });
-
-        myWins.createWindow({
-            id: "Alterar a senha",
-            width: 300,
-            height: 200,
-            center: true
-        });
-
-        myWins.window("winautorizar").attachToolbar({
-            icon_path: 'img/comandos/',
-            items: [
-                {id: "salvar", type: "button", text: "Salvar", img: "salvar.png"}
-            ],
-            onClick: function () {
-                form.validate();
-            }
-        });
-
-        let form = myWins.window("winautorizar").attachForm(alterarsenha_form);
-
-        form.attachEvent("onAfterValidate", function (status) {
-
-            if (!status)
-                return;
-
-            let tempdata = form.getFormData();
-
-            if (tempdata.password !== tempdata.repassword) {
-                dhtmlx.alert({
-                    title: 'Autorização',
-                    type: 'alert-error',
-                    text: 'As senhas não coicidem!'
-                });
-            }
-
-            let data = {
-                password: tempdata.password
-            };
-
-            $.ajax({
-                type: "POST",
-                url: config.endpoint +  '/oauth_users',
-                dataType: "json",
-                headers: {
-                    Prefer: "return=representation",
-                    Accept: "application/vnd.pgrst.object+json"
-                },
-                success: function () {
-
-                    myWins.window("winautorizar").close();
-                    dhtmlx.alert({
-                        title: 'Autorização',
-                        type: 'alert',
-                        text: 'Registrado com sucesso!'
-                    });
-                },
-                data: data
-            }).fail(function (jqXHR) {
-                dhtmlx.alert({
-                    title: 'Atenção',
-                    type: 'alert-error',
-                    text: jqXHR.responseJSON.message
-                });
-            });
-
-        });
-
-    }
+    //     let myWins = new dhtmlXWindows({
+    //         image_path: "codebase/imgs/"
+    //     });
+    //
+    //     myWins.createWindow({
+    //         id: "Alterar a senha",
+    //         width: 300,
+    //         height: 200,
+    //         center: true
+    //     });
+    //
+    //     myWins.window("winautorizar").attachToolbar({
+    //         icon_path: 'img/comandos/',
+    //         items: [
+    //             {id: "salvar", type: "button", text: "Salvar", img: "salvar.png"}
+    //         ],
+    //         onClick: function () {
+    //             form.validate();
+    //         }
+    //     });
+    //
+    //     let form = myWins.window("winautorizar").attachForm(alterarsenha_form);
+    //
+    //     form.attachEvent("onAfterValidate", function (status) {
+    //
+    //         if (!status)
+    //             return;
+    //
+    //         let tempdata = form.getFormData();
+    //
+    //         if (tempdata.password !== tempdata.repassword) {
+    //             dhtmlx.alert({
+    //                 title: 'Autorização',
+    //                 type: 'alert-error',
+    //                 text: 'As senhas não coicidem!'
+    //             });
+    //         }
+    //
+    //         let data = {
+    //             password: tempdata.password
+    //         };
+    //
+    //         $.ajax({
+    //             type: "POST",
+    //             url: config.endpoint +  '/oauth_users',
+    //             dataType: "json",
+    //             headers: {
+    //                 Prefer: "return=representation",
+    //                 Accept: "application/vnd.pgrst.object+json"
+    //             },
+    //             success: function () {
+    //
+    //                 myWins.window("winautorizar").close();
+    //                 dhtmlx.alert({
+    //                     title: 'Autorização',
+    //                     type: 'alert',
+    //                     text: 'Registrado com sucesso!'
+    //                 });
+    //             },
+    //             data: data
+    //         }).fail(function (jqXHR) {
+    //             dhtmlx.alert({
+    //                 title: 'Atenção',
+    //                 type: 'alert-error',
+    //                 text: jqXHR.responseJSON.message
+    //             });
+    //         });
+    //
+    //     });
+    //
+    // }
 
     layoutusuario.cells('a').attachToolbar({
         items: [
             {id: "novo", type: "button", text: "Novo Usuario", img: "img/adicionar.png"},
             {id: "editar", type: "button", text: "Editar", img: "img/editar.png"},
             {id: "sep1", type: "separator"},
-            {id: "remover", type: "button", text: "Excluir", img: "img/excluir.png"},
+            {id: "remover", type: "button", text: "Remover", img: "img/excluir.png"},
             {id: "alterarsenha", type: "button", text: "Alterar senha", img: "img/senha.png"},
             {id: "sep1", type: "separator"},
             {id: "concluido", type: "button", text: "Concluir Cadastro", img: "img/concluido.png"},
@@ -178,8 +176,27 @@ function usuario(cell) {
                         dhtmlx.message("Falha ao Cadastrar Usuário. Tente novamente.");
                     }
                 });
-            } else if ('alterarsenha') {
-                alterarSenha(tabelausuarios.getSelectedRowId());
+            }
+            // } else if ('alterarsenha') {
+            //     alterarSenha(tabelausuarios.getSelectedRowId());
+            // }
+                else if(id === 'remover'){
+                $.ajax({
+                    type: "DELETE",
+                    url: config.endpoint + '/oauth_users?verticals_uuid=eq.' + tabelausuarios.getSelectedRowId(),
+                    dataType: "json",
+                    headers: {
+                        Prefer: "return=representation",
+                        Accept: "application/vnd.pgrst.object+json"
+                    },
+                    success: function () {
+                        atualizargrid();
+                        dhtmlx.message.position="top";
+                        dhtmlx.message("Registro excluido.");
+                    },
+                }).fail(function (jqXHR) {
+                    console.debug('Ocorreu algum erro ao tentar conectar-se ao banco de dados.')
+                });
             }
         },
     });

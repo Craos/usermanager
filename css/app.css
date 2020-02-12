@@ -30,6 +30,27 @@ div.dhxform_control{
     background-color: rgba(62, 155, 186, 0.78) !important;
 }
 
+.dhxsidebar_base_material div.dhxsidebar_cont div.dhxsidebar_side div.dhxsidebar_side_items div.dhxsidebar_item{
+    background-color: #23282c;
+    border: none;
+    color: white;
+}
+
+.dhxsidebar_base_material div.dhxsidebar_cont div.dhxsidebar_side div.dhxsidebar_side_items div.dhxsidebar_item.dhxsidebar_item_selected{
+    border: none;
+    background-color: #4c5257;
+    border-bottom: 2px solid #52daff;
+}
+
+.dhxsidebar_base_material div.dhxsidebar_cont div.dhxsidebar_side div.dhxsidebar_side_items div.dhxsidebar_item:hover{
+    background-color: #494949;
+    border-bottom: 2px solid #52daff;
+}
+
+.dhxsidebar_base_material div.dhxsidebar_cont div.dhxsidebar_side{
+    background-color: #23282c;
+    border: 0;
+}
 
 .dhxlayout_base_material div.dhx_cell_layout.dhxlayout_collapsed_h div.dhx_cell_hdr{
     color: black;

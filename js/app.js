@@ -14,11 +14,11 @@ let App = function() {
     let sidebar = new dhtmlXSideBar({
 
         parent:         document.body,
-        template:       "icons",
+        template:       "details",
         icons_path:     "icons/",
         single_cell:    false,
         bubble:         6,
-        width:          40,
+        width:          200,
         header:         false,
         autohide:       false,
         offsets: {          // optional, offsets for fullscreen init
@@ -30,24 +30,18 @@ let App = function() {
         items: [
             {
                 id:         "Usuario",
-                text:       "Usuários",
+                text:       "Cadastro de Usuário",
                 icon:       "../img/user.png",
                 selected:   true
             },
             {
-                id:         "sep1",
-                type:       "separator"
-            },
-            {
-                id:         "Perfis",
-                text:       "Perfis",
+                id:         "Usuarios",
+                text:       "Usuários",
                 icon:       "../img/perfil.png",
                 selected:   false
             },
-            {
-                id:         "sep1",
-                type:       "separator"
-            },
+
+
         ]
     });
 
@@ -55,11 +49,11 @@ let App = function() {
 
         let cell = sidebar.cells(id);
         if (id === 'Rastreio'){
-            usuario(cell);
+            formulario(cell);
         }
 
     });
 
-    usuario(sidebar.cells('Usuario'));
+    formulario(sidebar.cells('Usuario'));
 
 };
