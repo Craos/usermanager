@@ -13,12 +13,12 @@ function formulario(cell) {
                 id: "a",
                 text: "Formulário para Cadastros",
                 header: true,
-                width: 455,
+                width: 650,
             },
             {
                 id: "b",
                 header: true,
-                height: 400,
+                height: 100,
             },
         ]
     });
@@ -36,7 +36,7 @@ function formulario(cell) {
     tabelausuarios.attachEvent("onRowSelect", function (id) {
         $.ajax({
             type: "GET",
-            url: config.endpoint + '/oauth_users?verticals_uuid=eq.' + id,
+            url: config.endpoint + '/oauth_users?ve rticals_uuid=eq.' + id,
             dataType: "json",
             headers: {
                 Prefer: "return=representation",
@@ -78,79 +78,79 @@ function formulario(cell) {
         });
     }
 
-    // function alterarSenha(id) {
+    function alterarSenha(id) {
 
-    //     let myWins = new dhtmlXWindows({
-    //         image_path: "codebase/imgs/"
-    //     });
-    //
-    //     myWins.createWindow({
-    //         id: "Alterar a senha",
-    //         width: 300,
-    //         height: 200,
-    //         center: true
-    //     });
-    //
-    //     myWins.window("winautorizar").attachToolbar({
-    //         icon_path: 'img/comandos/',
-    //         items: [
-    //             {id: "salvar", type: "button", text: "Salvar", img: "salvar.png"}
-    //         ],
-    //         onClick: function () {
-    //             form.validate();
-    //         }
-    //     });
-    //
-    //     let form = myWins.window("winautorizar").attachForm(alterarsenha_form);
-    //
-    //     form.attachEvent("onAfterValidate", function (status) {
-    //
-    //         if (!status)
-    //             return;
-    //
-    //         let tempdata = form.getFormData();
-    //
-    //         if (tempdata.password !== tempdata.repassword) {
-    //             dhtmlx.alert({
-    //                 title: 'Autorização',
-    //                 type: 'alert-error',
-    //                 text: 'As senhas não coicidem!'
-    //             });
-    //         }
-    //
-    //         let data = {
-    //             password: tempdata.password
-    //         };
-    //
-    //         $.ajax({
-    //             type: "POST",
-    //             url: config.endpoint +  '/oauth_users',
-    //             dataType: "json",
-    //             headers: {
-    //                 Prefer: "return=representation",
-    //                 Accept: "application/vnd.pgrst.object+json"
-    //             },
-    //             success: function () {
-    //
-    //                 myWins.window("winautorizar").close();
-    //                 dhtmlx.alert({
-    //                     title: 'Autorização',
-    //                     type: 'alert',
-    //                     text: 'Registrado com sucesso!'
-    //                 });
-    //             },
-    //             data: data
-    //         }).fail(function (jqXHR) {
-    //             dhtmlx.alert({
-    //                 title: 'Atenção',
-    //                 type: 'alert-error',
-    //                 text: jqXHR.responseJSON.message
-    //             });
-    //         });
-    //
-    //     });
-    //
-    // }
+        let myWins = new dhtmlXWindows({
+            image_path: "codebase/imgs/"
+        });
+
+        myWins.createWindow({
+            id: 'a',
+            width: 300,
+            height: 200,
+            center: true
+        });
+
+        myWins.window("winautorizar").attachToolbar({
+            icon_path: 'img/comandos/',
+            items: [
+                {id: "salvar", type: "button", text: "Salvar", img: "salvar.png"}
+            ],
+            onClick: function () {
+                form.validate();
+            }
+        });
+
+        let form = myWins.window("winautorizar").attachForm(alterarsenha_form);
+
+        form.attachEvent("onAfterValidate", function (status) {
+
+            if (!status)
+                return;
+
+            let tempdata = form.getFormData();
+
+            if (tempdata.password !== tempdata.repassword) {
+                dhtmlx.alert({
+                    title: 'Autorização',
+                    type: 'alert-error',
+                    text: 'As senhas não coicidem!'
+                });
+            }
+
+            let data = {
+                password: tempdata.password
+            };
+
+            $.ajax({
+                type: "POST",
+                url: config.endpoint +  '/oauth_users',
+                dataType: "json",
+                headers: {
+                    Prefer: "return=representation",
+                    Accept: "application/vnd.pgrst.object+json"
+                },
+                success: function () {
+
+                    myWins.window("winautorizar").close();
+                    dhtmlx.alert({
+                        title: 'Autorização',
+                        type: 'alert',
+                        text: 'Registrado com sucesso!'
+                    });
+                },
+                data: data
+            }).fail(function (jqXHR) {
+                dhtmlx.alert({
+                    title: 'Atenção',
+                    type: 'alert-error',
+                    text: jqXHR.responseJSON.message
+                });
+            });
+
+        });
+
+    }
 
     layoutusuario.cells('a').attachToolbar({
         items: [
@@ -161,8 +161,6 @@ function formulario(cell) {
             {id: "alterarsenha", type: "button", text: "Alterar senha", img: "img/senha.png"},
             {id: "sep1", type: "separator"},
             {id: "concluido", type: "button", text: "Concluir Cadastro", img: "img/concluido.png"},
-            {id: "sep1", type: "separator" },
-            {id: "ajuda", type: "button", img: "img/info.png"},
         ],
 
         onClick: function (id) {
@@ -176,10 +174,9 @@ function formulario(cell) {
                         dhtmlx.message("Falha ao Cadastrar Usuário. Tente novamente.");
                     }
                 });
+            } else if ('alterarsenha') {
+                alterarSenha(tabelausuarios.getSelectedRowId());
             }
-            // } else if ('alterarsenha') {
-            //     alterarSenha(tabelausuarios.getSelectedRowId());
-            // }
                 else if(id === 'remover'){
                 $.ajax({
                     type: "DELETE",

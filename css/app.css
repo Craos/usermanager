@@ -5,6 +5,9 @@ html, body{
     padding: 0;
     margin: 0;
 }
+.dhxlayout_base_material div.dhx_cell_layout{
+    overflow: hidden;
+}
 
 input[type=text]{
     border: none;
@@ -14,7 +17,8 @@ input[type=text]{
 div.dhxlayout_base_material div.dhx_cell_layout div.dhx_cell_hdr{
     background-color: white;
     color: #8c8c8c;
-    border-bottom: solid 1px #52daff;
+    font-size: 14px;
+    border-bottom: solid 2px #52daff;
     box-shadow: 0 0 0 3 black;
 }
 

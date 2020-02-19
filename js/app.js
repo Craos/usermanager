@@ -18,7 +18,7 @@ let App = function() {
         icons_path:     "icons/",
         single_cell:    false,
         bubble:         6,
-        width:          200,
+        width:          175,
         header:         false,
         autohide:       false,
         offsets: {          // optional, offsets for fullscreen init
@@ -51,9 +51,6 @@ let App = function() {
         if (id === 'Rastreio'){
             formulario(cell);
         }
-
     });
-
     formulario(sidebar.cells('Usuario'));
-
 };
