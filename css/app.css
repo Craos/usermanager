@@ -6,10 +6,15 @@ html, body{
     margin: 0;
 }
 
+input[type=text]{
+    border: none;
+    border-bottom: 1px solid #d7d7d7;
+}
+
 div.dhxlayout_base_material div.dhx_cell_layout div.dhx_cell_hdr{
     background-color: white;
-    color: black;
-    border-bottom: solid 2px #52daff;
+    color: #8c8c8c;
+    border-bottom: solid 1px #52daff;
     box-shadow: 0 0 0 3 black;
 }
 
@@ -39,12 +44,12 @@ div.dhxform_control{
 .dhxsidebar_base_material div.dhxsidebar_cont div.dhxsidebar_side div.dhxsidebar_side_items div.dhxsidebar_item.dhxsidebar_item_selected{
     border: none;
     background-color: #4c5257;
-    border-bottom: 2px solid #52daff;
+    border-left: 2px solid #52daff;
 }
 
 .dhxsidebar_base_material div.dhxsidebar_cont div.dhxsidebar_side div.dhxsidebar_side_items div.dhxsidebar_item:hover{
     background-color: #494949;
-    border-bottom: 2px solid #52daff;
+    border-left: 2px solid #52daff;
 }
 
 .dhxsidebar_base_material div.dhxsidebar_cont div.dhxsidebar_side{
