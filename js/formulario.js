@@ -85,7 +85,7 @@ function formulario(cell) {
         });
 
         myWins.createWindow({
-            id: 'a',
+            id: 'alterarsenha',
             width: 300,
             height: 200,
             center: true
@@ -153,6 +153,7 @@ function formulario(cell) {
     }
 
     layoutusuario.cells('a').attachToolbar({
+
         items: [
             {id: "novo", type: "button", text: "Novo Usuario", img: "img/adicionar.png"},
             {id: "editar", type: "button", text: "Editar", img: "img/editar.png"},
@@ -176,8 +177,7 @@ function formulario(cell) {
                 });
             } else if ('alterarsenha') {
                 alterarSenha(tabelausuarios.getSelectedRowId());
-            }
-                else if(id === 'remover'){
+            } else if(id === 'remover'){
                 $.ajax({
                     type: "DELETE",
                     url: config.endpoint + '/oauth_users?verticals_uuid=eq.' + tabelausuarios.getSelectedRowId(),
@@ -194,6 +194,8 @@ function formulario(cell) {
                 }).fail(function (jqXHR) {
                     console.debug('Ocorreu algum erro ao tentar conectar-se ao banco de dados.')
                 });
+            } else if {
+
             }
         },
     });
