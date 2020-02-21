@@ -32,7 +32,6 @@ function formulario(cell) {
     tabelausuarios.init();
     tabelausuarios.enableSmartRendering(true);
     tabelausuarios.makeFilter("searchFilter", 1);
-
     tabelausuarios.attachEvent("onRowSelect", function (id) {
         $.ajax({
             type: "GET",
